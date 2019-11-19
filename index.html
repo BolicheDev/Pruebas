@@ -11,11 +11,15 @@
 
 <body>
     <script>
-        var arr = [0, 1, 2, 3];
+        var arr = [
+            [01, 02, 03],
+            [1, 12, 13],
+            [21, 22, 23]
+        ];
         console.log(arr);
-        arr[0] = 150;
-        var arr_aux = arr;
-        arr[0] = 500;
+        arr[0][0] = 150;
+        var arr_aux = arr.slice();
+        arr[0][0] = 500;
         var arr_aux2 = arr;
         /*console.log(arr_aux);
         arr_aux[0] = 500;
@@ -25,15 +29,15 @@
     </script>
     <script>
         /*arr_aux[0] = 3;
-         console.log("---------");
-         console.log(arr);*/
+        console.log("---------");
+        console.log(arr);*/
         console.log(arr_aux);
     </script>
     <script>
         /*arr_aux[0] = 7;
-         arr[0] = 150;
-         console.log("---------");
-         console.log(arr);*/
+        arr[0] = 150;
+        console.log("---------");
+        console.log(arr);*/
         console.log(arr_aux2);
     </script>
 </body>
