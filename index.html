@@ -1,44 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--  -->
-    <title>Pruebas</title>
+    <link rel="stylesheet" href="ol.css" type="text/css">
+    <style>
+        .map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+    <script src="ol.js"></script>
+    <title>OpenLayers example</title>
 </head>
 
 <body>
-    <script>
-        var arr = [
-            [01, 02, 03],
-            [1, 12, 13],
-            [21, 22, 23]
-        ];
-        console.log(arr);
-        arr[0][0] = 150;
-        var arr_aux = arr.slice();
-        arr[0][0] = 500;
-        var arr_aux2 = arr;
-        /*console.log(arr_aux);
-        arr_aux[0] = 500;
-        console.log("---------");
-        console.log(arr);
-        console.log(arr_aux);*/
-    </script>
-    <script>
-        /*arr_aux[0] = 3;
-        console.log("---------");
-        console.log(arr);*/
-        console.log(arr_aux);
-    </script>
-    <script>
-        /*arr_aux[0] = 7;
-        arr[0] = 150;
-        console.log("---------");
-        console.log(arr);*/
-        console.log(arr_aux2);
+    <h2>My Map</h2>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+        if (typeof navigator.geolocation == 'object') {
+            navigator.geolocation.getCurrentPosition(mostrar_ubicacion);
+        }
+
+        function mostrar_ubicacion(p) {
+            var map = new ol.Map({
+                target: 'map',
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    })
+                ],
+                view: new ol.View({
+                    center: ol.proj.fromLonLat([p.coords.longitude, p.coords.latitude]),
+                    zoom: 18
+                })
+            });
+        }
     </script>
 </body>
 
